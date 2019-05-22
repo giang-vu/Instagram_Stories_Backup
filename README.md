@@ -7,7 +7,7 @@ login_account: docker
 login_password: docker
 bucket_name: docker
 ```
-1. Create an AWS EC2 instance with bootstrap script and AWS S3 bucket
+1. Create an AWS EC2 instance with the bootstrap script, an IAM S3-access role and a S3 bucket
 ```
 #!/bin/bash
 yum update -y
