@@ -25,7 +25,8 @@ RUN git clone https://github.com/notcammy/PyInstaStories.git
 WORKDIR /PyInstaStories
 
 # Create a shell script
-RUN echo python3 pyinstastories.py --download $user --username $login_account --password $login_password --taken-at > run.sh
+RUN echo cd /PyInstaStories > run.sh
+RUN echo python3 pyinstastories.py --download $user --username $login_account --password $login_password --taken-at >> run.sh
 RUN echo aws s3 sync stories/$user/ s3://$bucket_name >> run.sh
 
 # Give execution rights on the script
@@ -36,7 +37,7 @@ RUN chmod a+x run.sh
 RUN printf '* * * * * /PyInstaStories/run.sh\n#An empty line is required at the end of this file for a valid cron file.' > /etc/cron.d/cron_job
 
 # Give execution rights on the cron job
-RUN chmod a+x /etc/cron.d/cron_job
+RUN chmod 0644 /etc/cron.d/cron_job
 
 # Apply cron job
 RUN crontab /etc/cron.d/cron_job
