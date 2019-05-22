@@ -29,3 +29,7 @@ docker build -t gvu0110/instagram:v1 --build-arg user=docker --build-arg login_a
 ```
 docker run -it --name instagram -d gvu0110/instagram:v1 bash
 ```
+5. Send a cron start trigger to the container because cron does not start automatically
+```
+docker exec -it instagram cron
+```
