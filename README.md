@@ -1,4 +1,4 @@
-# instagram_stories_backup
+# Instagram_Stories_Backup
 
 Sample argurment:
 ```
